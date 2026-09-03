@@ -1,19 +1,22 @@
 class Solution {
 public:
     bool uniformArray(vector<int>& nums1) {
-        int so=INT_MAX;
+
+        //check all elements are even;
+        bool even =true;
         for(auto x: nums1){
-            if(x%2==1){
-                so=min(so,x);
-            }
+            if(x%2==1) even =false;
         }
 
-        for(auto x:nums1){
-            if(x%2==0&&so!=INT_MAX&&x<so){
-                return false;
-            }
+        if (even ==true) return true;
+
+        // odd,mix(odd+even)
+        int mn=*min_element(nums1.begin(),nums1.end());
+        if(mn%2==1){
+            return true;
         }
 
-        return true;
+        return false;
+
     }
 };
