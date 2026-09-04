@@ -17,10 +17,10 @@ public:
     void valid(TreeNode* root){
         if(root==NULL) return;
         
-        isValidBST(root->left);
+        valid(root->left);
         arr.push_back(root->val);
         
-        isValidBST(root->right);
+        valid(root->right);
 
     }
     bool isValidBST(TreeNode* root) {
