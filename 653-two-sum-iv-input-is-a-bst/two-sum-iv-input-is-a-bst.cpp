@@ -23,6 +23,7 @@ unordered_set<int>mp;
         valid(root);
         for(auto x:mp){
             int diff=k-x;
+            // b/c this is a valid bst so ye condition lag gyi &&diff!=x
             if(mp.find(diff)!=mp.end()&&diff!=x) return true;
         }
 
