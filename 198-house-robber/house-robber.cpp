@@ -1,16 +1,16 @@
 class Solution {
 public:
+int dp[101];
+int solve(vector<int>& nums,int i ,int n){
+    if (i>=n) return 0;
+    if (dp[i]!=-1) return dp[i];
+
+    return dp[i] = max(nums[i]+solve(nums,i+2,n),solve(nums,i+1,n));
+
+}
     int rob(vector<int>& nums) {
-        
         int n =nums.size();
-        
-        int prev2=0;
-        int prev1=0;
-        for (int i =0;i<nums.size();i++){
-            int curr=max(prev1,prev2+nums[i]);
-            prev2=prev1;
-            prev1=curr;
-        }
-        return prev1;
+        memset(dp,-1,sizeof(dp));
+        return solve(nums,0,n);
     }
 };
