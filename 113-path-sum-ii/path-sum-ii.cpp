@@ -12,7 +12,7 @@
 class Solution {
 public:
 vector<vector<int>>ans;
-void solve(TreeNode* root, int target,vector<int>curr){
+void solve(TreeNode* root, int target,vector<int>&curr){
     if (root==NULL) return;
 
     curr.push_back(root->val);
@@ -20,11 +20,13 @@ void solve(TreeNode* root, int target,vector<int>curr){
     
     if (target==0 && root->left==NULL&&root->right==NULL){
         ans.push_back(curr);
+        curr.pop_back();
         return;
     }
 
     solve(root->left,target,curr);
     solve(root->right,target,curr);
+    curr.pop_back();
     
 }
 
